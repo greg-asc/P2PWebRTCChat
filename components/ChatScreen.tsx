@@ -35,12 +35,13 @@ const generateId = (): string => Math.random().toString(36).substring(2, 15);
 // --- ChatScreen Component ---
 const ChatScreen: React.FC = () => {
     // Update initial state to use ReactionType identifiers
+    const convoEnd = Date.now();
     const [messages, setMessages] = useState<Message[]>([
-        { id: generateId(), type: 'text', content: 'Hello there!', sender: 'other', reactions: ['nickyoung'], timestamp: new Date() },
-        { id: generateId(), type: 'text', content: 'Hi! How are you?', sender: 'user', reactions: ['thumbsup'], timestamp: new Date() },
-        { id: generateId(), type: 'text', content: 'I am good, thanks! And you?', sender: 'other', reactions: ['huh'], timestamp: new Date() },
-        { id: generateId(), type: 'text', content: 'Doing well! Just setting up image reactions.', sender: 'user', reactions: ['kekw'], timestamp: new Date() },
-        { id: generateId(), type: 'text', content: 'Nice!', sender: 'other', timestamp: new Date() },
+        { id: generateId(), type: 'text', content: 'Hello there!', sender: 'other', timestamp: new Date(convoEnd - 132154) },
+        { id: generateId(), type: 'text', content: 'Hi! How are you?', sender: 'user', timestamp: new Date(convoEnd - 101854) },
+        { id: generateId(), type: 'text', content: 'I am good, thanks! And you?', sender: 'other', timestamp: new Date(convoEnd - 65034) },
+        { id: generateId(), type: 'text', content: 'Doing well! Just trying to see what this is all about.', sender: 'user', reactions: ['thumbsup'], timestamp: new Date(convoEnd - 52831) },
+        { id: generateId(), type: 'text', content: 'Nice!', sender: 'other', reactions: ['kekw'], timestamp: new Date() },
     ]);
     const [inputText, setInputText] = useState<string>('');
     const flatListRef = useRef<FlatList<Message>>(null);
